@@ -11,7 +11,7 @@ interface Message {
 }
 
 export function ChatWidget() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [messages, setMessages] = useState<Message[]>([
     { id: 1, text: 'Olá! Sou a Malu, assistente da EEMTI Professora Maria Luíza Saboia. Como posso ajudar?', sender: 'bot' }
   ]);
@@ -105,8 +105,8 @@ export function ChatWidget() {
               <div className="chat-avatar">M</div>
               <h3>A Malu tá ON!</h3>
             </div>
-            <button className="close-btn" onClick={() => setIsOpen(false)} aria-label="Fechar chat">
-              ×
+            <button className="minimize-btn" onClick={() => setIsOpen(false)} aria-label="Minimizar chat" title="Minimizar">
+              ▾
             </button>
           </div>
           <div className="chat-body">

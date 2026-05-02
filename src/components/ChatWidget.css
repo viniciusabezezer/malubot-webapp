@@ -82,20 +82,25 @@
   font-weight: 600;
 }
 
-.close-btn {
-  background: none;
+.minimize-btn {
+  background: rgba(255, 255, 255, 0.15);
   border: none;
   color: white;
-  font-size: 24px;
+  font-size: 22px;
   cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.2s;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
   padding: 0;
   line-height: 1;
 }
 
-.close-btn:hover {
-  opacity: 1;
+.minimize-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .chat-body {

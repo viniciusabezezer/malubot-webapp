@@ -142,7 +142,7 @@ function App() {
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-3">Escola Acolhedora</h4>
                 <p className="text-gray-600 leading-relaxed">
-                  Nosso lema é o acolhimento. Trabalhamos para criar um ambiente seguro, respeitoso e humano, onde cada aluno se sente parte de uma grande família.
+                  Nosso lema é o acolhimento. Trabalhamos para criar um ambiente seguro, respeitoso e humano, onde cada aluno se sente parte de uma grande comunidade.
                 </p>
               </div>
             </div>
