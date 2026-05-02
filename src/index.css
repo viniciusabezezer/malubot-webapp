@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-school-green: #0a7342;
+  --color-school-orange: #f26522;
+  --color-school-white: #ffffff;
+  
+  --color-telegram: #2AABEE;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-school-white);
+    color: #333333;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
