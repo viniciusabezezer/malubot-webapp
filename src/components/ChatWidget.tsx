@@ -11,19 +11,42 @@ interface Message {
 }
 
 export function ChatWidget() {
-
+  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { id: 1, text: 'Olá! Sou a Malu, assistente da EEMTI Professora Maria Luíza Saboia. Como posso ajudar?', sender: 'bot' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatWindowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  // Close chat when clicking outside
+  useEffect(() => {
+    if (!isOpen) return;
 
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        chatWindowRef.current &&
+        !chatWindowRef.current.contains(e.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    // Use a small delay so the opening click doesn't immediately close it
+    const timer = setTimeout(() => {
+      document.addEventListener('mousedown', handleClickOutside);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -67,13 +90,24 @@ export function ChatWidget() {
 
   return (
     <div className="chat-widget-container">
-        <div className="chat-window">
+      {!isOpen && (
+        <button className="chat-fab" onClick={() => setIsOpen(true)} aria-label="Abrir chat">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="currentColor"/>
+          </svg>
+        </button>
+      )}
+
+      {isOpen && (
+        <div className="chat-window" ref={chatWindowRef}>
           <div className="chat-header">
             <div className="chat-header-info">
               <div className="chat-avatar">M</div>
               <h3>A Malu tá ON!</h3>
             </div>
-
+            <button className="close-btn" onClick={() => setIsOpen(false)} aria-label="Fechar chat">
+              ×
+            </button>
           </div>
           <div className="chat-body">
             {messages.map((msg) => (
@@ -106,6 +140,7 @@ export function ChatWidget() {
             </button>
           </div>
         </div>
+      )}
     </div>
   );
 }

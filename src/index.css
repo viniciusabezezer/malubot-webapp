@@ -10,8 +10,51 @@
 
 @layer base {
   body {
-    background-color: var(--color-school-white);
+    background: linear-gradient(160deg, #e8f5e9 0%, #fff8e1 50%, #fbe9e7 100%);
     color: #333333;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
   }
+}
+
+/* ========== Quote Ticker (LED Panel) ========== */
+.quote-ticker {
+  background: linear-gradient(90deg, #064e2b, #0a7342, #064e2b);
+  color: #a8ffc8;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(10, 115, 66, 0.25);
+  letter-spacing: 0.02em;
+}
+
+.ticker-track {
+  display: inline-flex;
+  animation: ticker-scroll 28s linear infinite;
+}
+
+.ticker-text {
+  padding: 0 3rem;
+  display: inline-block;
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ========== Gradient Sections ========== */
+.hero-gradient {
+  background: linear-gradient(170deg, rgba(232, 245, 233, 0.5) 0%, rgba(255, 248, 225, 0.4) 60%, rgba(251, 233, 231, 0.3) 100%);
+}
+
+.features-gradient {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(232, 245, 233, 0.3) 100%);
 }
